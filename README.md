@@ -31,7 +31,7 @@ Analyze which products are most frequently ordered and generate the highest reve
 
 ###### top_products = data.groupby('Product Name')['Quantity_Ordered'].sum().sort_values(ascending=False).head(10)
 
-##### Visualize the top-selling products.
+##### Visualize the top-selling products:
 
 import matplotlib.pyplot as plt <br>
 
@@ -48,20 +48,20 @@ data['Order Date'] = pd.to_datetime(data['Order Date']) <br>
 data['Month'] = data['Order Date'].dt.month <br>
 monthly_sales = data.groupby('Month')['Price Each'].sum() <br>
 
-##### Visualize monthly sales trend
+##### Visualize monthly sales trend:
 monthly_sales.plot(kind='line') <br>
 plt.title('Monthly Sales Trend') <br>
 plt.xlabel('Month') <br>
 plt.ylabel('Total Sales') <br>
 plt.show()
 
-3. Sales by City
+3. Sales by City:
 Analyze the geographic distribution of sales to identify top-performing cities.
 
 data['City'] = data['Purchase Address'].apply(lambda x: x.split(',')[1]) <br>
 city_sales = data.groupby('City')['Price Each'].sum().sort_values(ascending=False) 
 
-##### Visualize sales by city
+##### Visualize sales by city:
 city_sales.plot(kind='bar') <br>
 plt.title('Sales by City') <br>
 plt.xlabel('City') <br>
