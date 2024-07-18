@@ -25,6 +25,50 @@ The e-commerce sales data analysis project aims to provide valuable insights int
 - Matplotlib
 - Seaborn
 
+### Analysis and Visualizations
+1. Top-Selling Products:
+Analyze which products are most frequently ordered and generate the highest revenue.
+
+###### top_products = data.groupby('Product Name')['Quantity_Ordered'].sum().sort_values(ascending=False).head(10)
+
+##### Visualize the top-selling products.
+
+import matplotlib.pyplot as plt <br>
+
+top_products.plot(kind='bar') <br>
+4plt.title('Top-Selling Products') <br>
+plt.xlabel('Product Name') <br>
+plt.ylabel('Quantity Ordered') <br>
+plt.show()
+
+2. Monthly Sales Trend:
+Analyze the trend of sales over the months to identify peak sales periods.
+
+data['Order Date'] = pd.to_datetime(data['Order Date']) <br>
+data['Month'] = data['Order Date'].dt.month <br>
+monthly_sales = data.groupby('Month')['Price Each'].sum() <br>
+
+##### Visualize monthly sales trend
+monthly_sales.plot(kind='line') <br>
+plt.title('Monthly Sales Trend') <br>
+plt.xlabel('Month') <br>
+plt.ylabel('Total Sales') <br>
+plt.show()
+
+3. Sales by City
+Analyze the geographic distribution of sales to identify top-performing cities.
+
+data['City'] = data['Purchase Address'].apply(lambda x: x.split(',')[1]) <br>
+city_sales = data.groupby('City')['Price Each'].sum().sort_values(ascending=False) 
+
+##### Visualize sales by city
+city_sales.plot(kind='bar') <br>
+plt.title('Sales by City') <br>
+plt.xlabel('City') <br>
+plt.ylabel('Total Sales') <br>
+plt.show()
+
+
 ### Key Insights
 #### Monthly Sales Trends:
 
