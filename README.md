@@ -1,4 +1,4 @@
-# Sales Data Analysis Project
+# Project title- Exploring Electronics Sales Trends with Python
 
 ## Introduction
 
